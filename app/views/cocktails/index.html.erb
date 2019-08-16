@@ -1,9 +1,51 @@
-<h1>All cocktails</h1>
-<ul>
-<% @cocktails.each do |cocktail| %>
-  <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-<% end %>
-</ul>
+<!-- <div class="header">
+  <div class="navbar-lewagon">Test</div>
+  <h1 class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://i.imgur.com/2bmuAZq.jpg);">All cocktails</h1>
+</div> -->
 
-<%= link_to 'Add a new cocktail', '/cocktails/new' %>
+<!-- test  -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+  <a class="navbar-brand" href="/cocktails">Beertails</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/cocktails">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/cocktails/new">Add a new cocktail</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- test -->
+
+<div class="container">
+<h1>
+  <span id="banner-typed-text">Browse all cocktails</span>
+</h1>
+<div class="container mt-4">
+  <div class="cards">
+    <% @cocktails.each do |cock| %>
+      <%= link_to cocktail_path(cock) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://imgur.com/SdL2Uzj.jpg)"></div>
+        <div class="card-footer">
+          <%= cock.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<br>
+<br>
+<a href="/cocktails/new" class="btn btn-outline-secondary">Add a new cocktail</a>
+</div>
+
+<!-- https://source.unsplash.com/random -->
 

@@ -1,8 +1,25 @@
-<h1><%= @cocktail.name %></h1>
-<% @cocktail.doses.each do |dose| %>
-  <p><%= dose.ingredient.name %></p>
-  <p><%= dose.description %></p>
-<% end %>
+<div class="container">
+  <h1><%= @cocktail.name %></h1>
+  <% @cocktail.reviews.each do |r| %>
+  <p>Rating: <%= r.rating %></p>
+  <% end %>
+  <% @cocktail.doses.each do |dose| %>
+<!--     <div class="card-ingredient" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url(https://imgur.com/jcduUL0.jpg)"></div> -->
+    <div class="card-ingredient-footer">Ingredients: <%= dose.ingredient.name %> | Recipe: <%= dose.description %></div>
+  <% end %>
 
-<p><%= link_to 'Add a dose to this cocktail', '/cocktails/:id/doses/new' %></p>
-<p><%= link_to 'Back to all cocktails', '/cocktails' %></p>
+  <p>What would you like to do?</p>
+  <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-secondary" %>
+  <br>
+  <p>Rate this cocktail:</p>
+  <%= simple_form_for([@cocktail, @review]) do |f| %>
+  <%= f.input :rating %>
+  <%= f.submit class: "btn btn-outline-secondary" %>
+  <% end %>
+  <br>
+  <a href="/cocktails" class="btn btn-outline-secondary">Back to all cocktails</a>
+</div>
+
+
+
+<!-- <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random);"></div> -->
